@@ -7,6 +7,8 @@ name = "pypi"
 django = "*"
 mysqlclient = "*"
 django-rest-framework = "*"
+requests = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 autopep8 = "*"

@@ -27,4 +27,14 @@ class TagDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
-# How to make tasks by tag such as 'tasks/3/tags' for tasks with tag id 3
+
+class TasksByTagList(generics.ListAPIView):
+    serializer_class = TaskSerializer
+
+    def get_queryset(self):
+        """ overriding default to query only tasks with tag id """
+        tag_id = self.kwargs['tag_pk']
+        return Task.objects.filter(tags=tag_id)
+
+
+# class TagList(generics.ListCreateAPIView)

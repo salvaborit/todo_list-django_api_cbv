@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=63)
+    title = models.CharField(max_length=63, unique=True)
 
     def __str__(self):
         return self.title
@@ -24,7 +24,7 @@ class Task(models.Model):
     ]
 
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     urgency = models.CharField(max_length=63,
                                choices=URGENCY_CHOICES,
                                default=URGENCY_LEVEL_0)
